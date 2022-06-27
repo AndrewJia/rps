@@ -14,6 +14,31 @@ function computerPlay() {
 	}
 }
 
-console.log(computerPlay())
-console.log(computerPlay())
-console.log(computerPlay())
+function playRound(playerSelection, computerSelection) {
+	if(playerSelection === computerSelection) {
+		return 'It\'s a tie! Both chose '+playerSelection;
+	}
+	if(playerSelection === 'rock') {
+		if(computerSelection === 'paper') {
+			return 'You lose! Paper beats Rock';
+		} else {
+			return 'You win! Rock beats Scissors';
+		}
+	} else if (playerSelection === 'paper') {
+		if(computerSelection === 'scissors') {
+			return 'You lose! Scissors beats Paper';
+		} else {
+			return 'You win! Paper beats Rock';
+		}
+	} else {
+		if(computerSelection === 'rock') {
+			return 'You lose! Rock beats Scissors';
+		} else {
+			return 'You win! Scissors beats Paper';
+		}
+	}
+}
+
+const playerSelection = "rock";
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));

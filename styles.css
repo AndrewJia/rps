@@ -7,6 +7,18 @@ h3 {
     display: flex;
     justify-content: center;
     gap: 32px;
+    
+    
+}
+
+.card {
+    border-style: solid;
+    border-width: 8px;
+    border-radius: 16px;
+    border-color: gray;
+    background-color: darkblue;
+    text-align: center;
+    color: orange;
 }
 
 .results {

@@ -17,27 +17,34 @@ function computerPlay() {
 //determine result of round given player chocie
 function playRound(playerSelection) {
 	let computerSelection = computerPlay();
-	if(playerSelection === computerSelection) {
+	if (playerSelection === computerSelection) {
 		return 'It\'s a tie! Both chose '+playerSelection;
 	}
-	if(playerSelection === 'swain') {
-		if(computerSelection === 'paper') {
-			return 'You lose! Paper beats Rock';
+	
+	if (playerSelection === 'swain') {
+		if(computerSelection === 'anivia') {
+			return 'You lose! Swain loses to Anivia';
 		} else {
-			return 'You win! Rock beats Scissors';
+			return 'You win! Swain beats Zilean';
 		}
-	} else if (playerSelection === 'paper') {
-		if(computerSelection === 'scissors') {
-			return 'You lose! Scissors beats Paper';
+	} else if (playerSelection === 'anivia') {
+		if(computerSelection === 'zilean') {
+			return 'You lose! Anivia loses to Zilean';
 		} else {
-			return 'You win! Paper beats Rock';
+			return 'You win! Anivia beats Swain';
 		}
-	} else {
+	} else if (playerSelection === 'zilean') {
 		if(computerSelection === 'rock') {
-			return 'You lose! Rock beats Scissors';
+			return 'You lose! Zilean loses to Swain';
 		} else {
-			return 'You win! Scissors beats Paper';
+			return 'You win! Zilean beats Anivia';
 		}
+	} else if (playerSelection === 'ryze') {
+		//capitalize first letter of name
+		computerSelection = computerSelection[0].toUpperCase() + computerSelection.substring(1); 
+		return 'You lose! Ryze loses to '+computerSelection;
+	} else {
+		return 'Invalid input';
 	}
 }
 

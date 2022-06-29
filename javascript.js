@@ -4,21 +4,23 @@ function computerPlay() {
 
 	switch(random) {
 		case 0:
-			return 'rock';
+			return 'swain';
 		case 1:
-			return 'paper';
+			return 'anivia';
 		case 2:
-			return 'scissors'
+			return 'zilean'
 		default:
 			return 'something went wrong in computerPlay'
 	}
 }
 
-function playRound(playerSelection, computerSelection) {
+//determine result of round given player chocie
+function playRound(playerSelection) {
+	let computerSelection = computerPlay();
 	if(playerSelection === computerSelection) {
 		return 'It\'s a tie! Both chose '+playerSelection;
 	}
-	if(playerSelection === 'rock') {
+	if(playerSelection === 'swain') {
 		if(computerSelection === 'paper') {
 			return 'You lose! Paper beats Rock';
 		} else {

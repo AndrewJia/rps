@@ -20,28 +20,35 @@ function playRound(playerSelection) {
 	if (playerSelection === computerSelection) {
 		return 'It\'s a tie! Both chose '+playerSelection;
 	}
-	
+
 	if (playerSelection === 'swain') {
 		if(computerSelection === 'anivia') {
+			computerScore++;
 			return 'You lose! Swain loses to Anivia';
 		} else {
+			playerScore++;
 			return 'You win! Swain beats Zilean';
 		}
 	} else if (playerSelection === 'anivia') {
 		if(computerSelection === 'zilean') {
+			computerScore++;
 			return 'You lose! Anivia loses to Zilean';
 		} else {
+			playerScore++;
 			return 'You win! Anivia beats Swain';
 		}
 	} else if (playerSelection === 'zilean') {
 		if(computerSelection === 'rock') {
+			computerScore++;
 			return 'You lose! Zilean loses to Swain';
 		} else {
+			playerScore++;
 			return 'You win! Zilean beats Anivia';
 		}
 	} else if (playerSelection === 'ryze') {
 		//capitalize first letter of name
 		computerSelection = computerSelection[0].toUpperCase() + computerSelection.substring(1); 
+		computerScore++;
 		return 'You lose! Ryze loses to '+computerSelection;
 	} else {
 		return 'Invalid input';
@@ -49,9 +56,12 @@ function playRound(playerSelection) {
 }
 
 function game() {
-	const playerSelection = prompt('rock, paper, or scissors?').toLowerCase();
-	const computerSelection = computerPlay();
-	console.log(playRound(playerSelection, computerSelection));
+	const playerSelection = prompt('Swain, Anivia, or Zilean?').toLowerCase();
+	console.log(playRound(playerSelection));
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 game();
+console.log(playerScore+'-'+computerScore);

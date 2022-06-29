@@ -55,6 +55,9 @@ function playRound(playerSelection) {
 	}
 }
 
+const result = document.querySelector('.prevround');
+
+
 function game() {
 	const playerSelection = prompt('Swain, Anivia, or Zilean?').toLowerCase();
 	console.log(playRound(playerSelection));
@@ -65,3 +68,11 @@ let computerScore = 0;
 
 game();
 console.log(playerScore+'-'+computerScore);
+
+const champs = document.querySelectorAll('.card');
+champs.forEach(champ => console.log(champ));
+champs.forEach(champ => champ.addEventListener("click", () => {
+    console.log(champ.id+" clicked.");
+}));
+/*const ryze = document.querySelector('#ryze');
+console.log(ryze);*/

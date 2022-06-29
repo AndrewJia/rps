@@ -73,6 +73,7 @@ const champs = document.querySelectorAll('.card');
 champs.forEach(champ => console.log(champ));
 champs.forEach(champ => champ.addEventListener("click", () => {
     console.log(champ.id+" clicked.");
+	console.log(playRound(champ.id));
 }));
 /*const ryze = document.querySelector('#ryze');
 console.log(ryze);*/

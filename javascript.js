@@ -85,10 +85,14 @@ function onClick(champ) {
 			break;
 		case 7:   //all borders and title text turn blue
 			cards.forEach(card => card.style.borderColor = 'darkblue');
-			const title = document.querySelector('h1');
 			title.style.color = 'darkblue';
-			const info = document.querySelector('h3');
 			info.style.color = 'darkblue';
+			break;
+		case 12:  //change info text
+			info.textContent = "A desperate ritual with our Great Blue Lord! Click on Ryze to play."
+			break;
+		case 15: 
+			body.style.backgroundColor = 'blue';
 			break;
 	}
 
@@ -106,6 +110,9 @@ const result = document.querySelector('.prevround');
 const score = document.querySelector('.score');
 const ryze = document.querySelector('#ryze');         //card containing ryze (the click target)
 const ryzeimg = document.querySelector('#ryzeimg');   //ryze image
+const title = document.querySelector('h1');
+const info = document.querySelector('h3');
+const body = document.querySelector('#body');
 
 //add click event listener to every card
 const cards = document.querySelectorAll('.card');

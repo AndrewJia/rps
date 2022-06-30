@@ -55,16 +55,21 @@ function playRound(playerSelection) {
 	}
 }
 
+function onClick(champ) {
+	result.textContent = playRound(champ);
+	score.textContent = playerScore+'-'+computerScore;
+}
+
 let playerScore = 0;
 let computerScore = 0;
+let ryzeCount = 0;
 
 const result = document.querySelector('.prevround');
 const score = document.querySelector('.score');
 
+//add click event listener to every card
 const champs = document.querySelectorAll('.card');
-champs.forEach(champ => console.log(champ));
 champs.forEach(champ => champ.addEventListener("click", () => {
     console.log(champ.id+" clicked.");
-	result.textContent = playRound(champ.id);
-	score.textContent = playerScore+'-'+computerScore;
+	onClick(champ.id);
 }));

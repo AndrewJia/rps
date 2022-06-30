@@ -55,16 +55,101 @@ function playRound(playerSelection) {
 	}
 }
 
+//helper function that resets result text color
+function resetText() {
+	if(ryzeCount <= 15) {
+		result.style.color = 'black';
+		result.style.backgroundColor = 'white';
+	} else {
+		result.style.color = 'red';
+		result.style.backgroundColor = DARKBLUE;
+	}
+}
+
+function onClick(champ) {
+	//if ryze
+	if (champ === 'ryze') {
+		ryzeCount++;
+		console.log(ryzeCount+" ryze");
+
+		//if ryze >= 10, increase image size
+		if(ryzeCount >= 10) {
+			ryzeSize += 4;
+			ryzeimg.style.height = ryzeSize+'px';
+		}
+	} else {      //not ryze
+		if(ryzeCount >= 20) {
+			result.textContent = 'Follow the plan, imbecile. EQEQEQEQEQ'
+			result.style.color = 'red';
+			result.style.backgroundColor = DARKBLUE;
+			playerScore = `${playerScore} Ryze`;
+			score.textContent = playerScore+'-'+computerScore;
+		}
+		return;   //no bonus effects
+	}
+
+	//standard response
+	resetText(); //reset text color
+	result.textContent = playRound(champ);
+	score.textContent = playerScore+'-'+computerScore;
+	
+	switch(ryzeCount) {
+		case 2:   //ryze border color changes
+			ryze.style.borderColor = 'darkblue';
+			break;
+		case 5:   //special result text
+			result.textContent = 'Our blue brother ceases his slumber. Lend him your runes.'
+			result.style.color = 'red';
+			result.style.backgroundColor = 'darkblue';
+			break;
+		case 7:   //all borders and title text turn blue
+			cards.forEach(card => card.style.borderColor = 'darkblue');
+			title.style.color = 'darkblue';
+			info.style.color = 'darkblue';
+			break;
+		case 12:  //change info text
+			info.textContent = "A desperate ritual with our Great Blue Lord! Click on Ryze to play."
+			break;
+		case 15:  //background is blue
+			document.body.style.backgroundColor = DARKBLUE;
+			score.style.color = 'red';
+			score.style.fontSize = '48px';
+			break;
+		case 18:  //player score is now 'Ryze'
+			playerScore = 'Ryze';
+			break;
+		case 22:  //replace 'Score' indicator with 'Ryze'
+			const scoreHeader = document.querySelector('.results h3');
+			scoreHeader.textContent = 'RYZE';
+			scoreHeader.setAttribute('style', 'color: red; background: #0a0a3c; font-size: 96px; font-family: ');   
+		case 4:  //put champs in rune prison
+			const images = document.querySelectorAll('img');
+			for(let i = 0; i < 3; i++) {
+				images[i].src = './images/Rune_Prison.webp';
+				images[i].style.width = '120px';
+			}
+			ryzeimg.src = './images/RyzePhase2.png';
+			ryzeimg.style.height = ryzeSize+'px';
+	}
+}
+
+const DARKBLUE = '#0a0a3c';
+
 let playerScore = 0;
 let computerScore = 0;
+let ryzeCount = 0;
+let ryzeSize = 120;
 
 const result = document.querySelector('.prevround');
 const score = document.querySelector('.score');
+const ryze = document.querySelector('#ryze');         //card containing ryze (the click target)
+const ryzeimg = document.querySelector('#ryzeimg');   //ryze image
+const title = document.querySelector('h1');
+const info = document.querySelector('h3');
 
-const champs = document.querySelectorAll('.card');
-champs.forEach(champ => console.log(champ));
-champs.forEach(champ => champ.addEventListener("click", () => {
-    console.log(champ.id+" clicked.");
-	result.textContent = playRound(champ.id);
-	score.textContent = playerScore+'-'+computerScore;
+//add click event listener to every card
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => card.addEventListener("click", () => {
+    console.log(card.id+" clicked.");
+	onClick(card.id);
 }));

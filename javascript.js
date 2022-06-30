@@ -56,9 +56,7 @@ function playRound(playerSelection) {
 }
 
 function onClick(champ) {
-	//standard response
-	result.textContent = playRound(champ);
-	score.textContent = playerScore+'-'+computerScore;
+	//if ryze
 	if (champ === 'ryze') {
 		ryzeCount++;
 		console.log(ryzeCount+" ryze");
@@ -68,8 +66,21 @@ function onClick(champ) {
 			ryzeSize += 4;
 			ryzeimg.style.height = ryzeSize+'px';
 		}
+	} else {      //not ryze
+		if(ryzeCount >= 20) {
+			result.textContent = 'Follow the plan, imbecile. EQEQEQEQEQ'
+			result.style.color = 'red';
+			result.style.backgroundColor = 'darkblue';
+		}
+		return;   //no bonus effects
 	}
 
+	//standard response
+	result.style.color = 'black'; //reset text color
+	result.style.backgroundColor = 'white';
+	result.textContent = playRound(champ);
+	score.textContent = playerScore+'-'+computerScore;
+	
 	switch(ryzeCount) {
 		case 2:   //ryze border color changes
 			ryze.style.borderColor = 'darkblue';
@@ -78,10 +89,6 @@ function onClick(champ) {
 			result.textContent = 'Our blue brother ceases his slumber. Lend him your runes.'
 			result.style.color = 'red';
 			result.style.backgroundColor = 'darkblue';
-			break;
-		case 6:
-			result.style.color = 'black'; //reset text color
-			result.style.backgroundColor = 'white';
 			break;
 		case 7:   //all borders and title text turn blue
 			cards.forEach(card => card.style.borderColor = 'darkblue');

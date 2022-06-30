@@ -82,7 +82,7 @@ function onClick(champ) {
 			result.textContent = 'Follow the plan, imbecile. EQEQEQEQEQ'
 			result.style.color = 'red';
 			result.style.backgroundColor = DARKBLUE;
-			playerScore = `${playerScore}Ryze`;
+			playerScore = `${playerScore} Ryze`;
 			score.textContent = playerScore+'-'+computerScore;
 		}
 		return;   //no bonus effects
@@ -118,7 +118,18 @@ function onClick(champ) {
 		case 18:  //player score is now 'Ryze'
 			playerScore = 'Ryze';
 			break;
-		
+		case 22:  //replace 'Score' indicator with 'Ryze'
+			const scoreHeader = document.querySelector('.results h3');
+			scoreHeader.textContent = 'RYZE';
+			scoreHeader.setAttribute('style', 'color: red; background: #0a0a3c; font-size: 96px; font-family: ');   
+		case 4:  //put champs in rune prison
+			const images = document.querySelectorAll('img');
+			for(let i = 0; i < 3; i++) {
+				images[i].src = './images/Rune_Prison.webp';
+				images[i].style.width = '120px';
+			}
+			ryzeimg.src = './images/RyzePhase2.png';
+			ryzeimg.style.height = ryzeSize+'px';
 	}
 }
 

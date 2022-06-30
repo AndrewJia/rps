@@ -60,6 +60,9 @@ function resetText() {
 	if(ryzeCount <= 15) {
 		result.style.color = 'black';
 		result.style.backgroundColor = 'white';
+	} else {
+		result.style.color = 'red';
+		result.style.backgroundColor = DARKBLUE;
 	}
 }
 
@@ -78,7 +81,9 @@ function onClick(champ) {
 		if(ryzeCount >= 20) {
 			result.textContent = 'Follow the plan, imbecile. EQEQEQEQEQ'
 			result.style.color = 'red';
-			result.style.backgroundColor = 'darkblue';
+			result.style.backgroundColor = DARKBLUE;
+			playerScore = `${playerScore}Ryze`;
+			score.textContent = playerScore+'-'+computerScore;
 		}
 		return;   //no bonus effects
 	}
@@ -108,10 +113,12 @@ function onClick(champ) {
 		case 15:  //background is blue
 			document.body.style.backgroundColor = DARKBLUE;
 			score.style.color = 'red';
+			score.style.fontSize = '48px';
 			break;
-		case 18:  
+		case 18:  //player score is now 'Ryze'
 			playerScore = 'Ryze';
 			break;
+		
 	}
 }
 

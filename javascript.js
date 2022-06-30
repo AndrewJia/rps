@@ -55,6 +55,14 @@ function playRound(playerSelection) {
 	}
 }
 
+//helper function that resets result text color
+function resetText() {
+	if(ryzeCount <= 15) {
+		result.style.color = 'black';
+		result.style.backgroundColor = 'white';
+	}
+}
+
 function onClick(champ) {
 	//if ryze
 	if (champ === 'ryze') {
@@ -76,8 +84,7 @@ function onClick(champ) {
 	}
 
 	//standard response
-	result.style.color = 'black'; //reset text color
-	result.style.backgroundColor = 'white';
+	resetText(); //reset text color
 	result.textContent = playRound(champ);
 	score.textContent = playerScore+'-'+computerScore;
 	
@@ -98,12 +105,14 @@ function onClick(champ) {
 		case 12:  //change info text
 			info.textContent = "A desperate ritual with our Great Blue Lord! Click on Ryze to play."
 			break;
-		case 15: 
-			body.style.backgroundColor = 'blue';
+		case 15:  //background is blue
+			document.body.style.backgroundColor = DARKBLUE;
+			score.style.color = 'red';
+			break;
+		case 18:  
+			playerScore = 'Ryze';
 			break;
 	}
-
-
 }
 
 const DARKBLUE = '#0a0a3c';
@@ -119,7 +128,6 @@ const ryze = document.querySelector('#ryze');         //card containing ryze (th
 const ryzeimg = document.querySelector('#ryzeimg');   //ryze image
 const title = document.querySelector('h1');
 const info = document.querySelector('h3');
-const body = document.querySelector('#body');
 
 //add click event listener to every card
 const cards = document.querySelectorAll('.card');

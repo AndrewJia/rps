@@ -62,25 +62,54 @@ function onClick(champ) {
 	if (champ === 'ryze') {
 		ryzeCount++;
 		console.log(ryzeCount+" ryze");
+
+		//if ryze >= 10, increase image size
+		if(ryzeCount >= 10) {
+			ryzeSize += 4;
+			ryzeimg.style.height = ryzeSize+'px';
+		}
 	}
 
 	switch(ryzeCount) {
-		case 2:
-			const ryze = document.querySelector('#ryze');
+		case 2:   //ryze border color changes
 			ryze.style.borderColor = 'darkblue';
-	} 
+			break;
+		case 5:   //special result text
+			result.textContent = 'Our blue brother ceases his slumber. Lend him your runes.'
+			result.style.color = 'red';
+			result.style.backgroundColor = 'darkblue';
+			break;
+		case 6:
+			result.style.color = 'black'; //reset text color
+			result.style.backgroundColor = 'white';
+			break;
+		case 7:   //all borders and title text turn blue
+			cards.forEach(card => card.style.borderColor = 'darkblue');
+			const title = document.querySelector('h1');
+			title.style.color = 'darkblue';
+			const info = document.querySelector('h3');
+			info.style.color = 'darkblue';
+			break;
+	}
+
+
 }
+
+const DARKBLUE = '#0a0a3c';
 
 let playerScore = 0;
 let computerScore = 0;
 let ryzeCount = 0;
+let ryzeSize = 120;
 
 const result = document.querySelector('.prevround');
 const score = document.querySelector('.score');
+const ryze = document.querySelector('#ryze');         //card containing ryze (the click target)
+const ryzeimg = document.querySelector('#ryzeimg');   //ryze image
 
 //add click event listener to every card
-const champs = document.querySelectorAll('.card');
-champs.forEach(champ => champ.addEventListener("click", () => {
-    console.log(champ.id+" clicked.");
-	onClick(champ.id);
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => card.addEventListener("click", () => {
+    console.log(card.id+" clicked.");
+	onClick(card.id);
 }));

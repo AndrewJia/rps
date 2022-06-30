@@ -56,8 +56,19 @@ function playRound(playerSelection) {
 }
 
 function onClick(champ) {
+	//standard response
 	result.textContent = playRound(champ);
 	score.textContent = playerScore+'-'+computerScore;
+	if (champ === 'ryze') {
+		ryzeCount++;
+		console.log(ryzeCount+" ryze");
+	}
+
+	switch(ryzeCount) {
+		case 2:
+			const ryze = document.querySelector('#ryze');
+			ryze.style.borderColor = 'darkblue';
+	} 
 }
 
 let playerScore = 0;

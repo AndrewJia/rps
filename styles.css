@@ -8,6 +8,7 @@ h3 {
     justify-content: center;
     gap: 32px;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .card {

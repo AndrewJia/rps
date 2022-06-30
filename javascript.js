@@ -38,7 +38,7 @@ function playRound(playerSelection) {
 			return 'You win! Anivia beats Swain';
 		}
 	} else if (playerSelection === 'zilean') {
-		if(computerSelection === 'rock') {
+		if(computerSelection === 'swain') {
 			computerScore++;
 			return 'You lose! Zilean loses to Swain';
 		} else {

@@ -7,8 +7,7 @@ h3 {
     display: flex;
     justify-content: center;
     gap: 32px;
-    
-    
+    align-items: flex-start;
 }
 
 .card {

@@ -121,8 +121,9 @@ function onClick(champ) {
 		case 22:  //replace 'Score' indicator with 'Ryze'
 			const scoreHeader = document.querySelector('.results h3');
 			scoreHeader.textContent = 'RYZE';
-			scoreHeader.setAttribute('style', 'color: red; background: #0a0a3c; font-size: 96px; font-family: ');   
-		case 4:  //put champs in rune prison
+			scoreHeader.setAttribute('style', 'color: red; background: #0a0a3c; font-size: 96px; font-family: ');  
+			break; 
+		case 30:  //put champs in rune prison
 			const images = document.querySelectorAll('img');
 			for(let i = 0; i < 3; i++) {
 				images[i].src = './images/Rune_Prison.webp';
@@ -130,6 +131,7 @@ function onClick(champ) {
 			}
 			ryzeimg.src = './images/RyzePhase2.png';
 			ryzeimg.style.height = ryzeSize+'px';
+			break;
 	}
 }
 
